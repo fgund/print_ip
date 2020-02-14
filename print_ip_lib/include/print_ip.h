@@ -12,7 +12,7 @@ std::string print_ip(T value) {
         }
     }
     return result;
-};
+}
 
 
 #endif //_PRINT_IP_H
