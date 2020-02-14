@@ -23,4 +23,4 @@ deploy:
   provider: script
   skip_cleanup: true
   script:
-  - curl -T print_ip-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb -ufgund:$BINTRAY_API_KEY "https://api.bintray.com/content/fgund/OTUS_CPP/ip_filtering/$TRAVIS_BUILD_NUMBER/print_ip-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb;deb_distribution=bionic;deb_component=main;deb_architecture=amd64;publish=1"
+  - curl -T print_ip-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb -ufgund:$BINTRAY_API_KEY "https://api.bintray.com/content/fgund/OTUS_CPP/print_ip/$TRAVIS_BUILD_NUMBER/print_ip-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb;deb_distribution=bionic;deb_component=main;deb_architecture=amd64;publish=1"
