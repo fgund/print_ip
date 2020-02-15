@@ -1,5 +1,6 @@
 #ifndef TUPLEPRINTER_H
 #define TUPLEPRINTER_H
+#include <tuple>
 
 template<class Tuple, std::size_t N>
 struct TuplePrinter {
