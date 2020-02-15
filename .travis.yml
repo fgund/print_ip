@@ -10,6 +10,14 @@ install:
 before_script:
 - echo "deb http://archive.ubuntu.com/ubuntu xenial main universe" | sudo tee -a /etc/apt/sources.list
 - sudo apt-get update -qq
+addons:
+  apt:
+    packages:
+      - doxygen
+      - doxygen-doc
+      - doxygen-latex
+      - doxygen-gui
+      - graphviz
 script:
 - conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan
 - conan install -s compiler.libcxx=libstdc++11 .
@@ -19,8 +27,18 @@ script:
 - cmake --build . --config Release
 - cmake --build . --target test
 - cmake --build . --target package
+- mkdir docs
 deploy:
   provider: script
   skip_cleanup: true
   script:
   - curl -T print_ip-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb -ufgund:$BINTRAY_API_KEY "https://api.bintray.com/content/fgund/OTUS_CPP/print_ip/$TRAVIS_BUILD_NUMBER/print_ip-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb;deb_distribution=bionic;deb_component=main;deb_architecture=amd64;publish=1"
+  - doxygen Doxyfile
+after_deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+  local_dir: ./docs/html
+  keep_history: true
+  on:
+    branch: master

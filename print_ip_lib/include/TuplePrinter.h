@@ -1,7 +1,14 @@
+/*!
+*\file
+*\brief Supplementary struct to extract ip data from tuples and format it.
+* Uses recursive templates.
+*/
 #ifndef TUPLEPRINTER_H
 #define TUPLEPRINTER_H
 #include <tuple>
 
+/// \brief Supplementary struct to extract ip data from tuples and format it.
+/// Recursive template specialization.
 template<class Tuple, std::size_t N>
 struct TuplePrinter {
     static std::string to_string(const Tuple& t)
@@ -14,6 +21,8 @@ struct TuplePrinter {
     }
 };
 
+/// \brief Supplementary struct to extract ip data from tuples and format it.
+/// Template specialization to end the recursion.
 template<class Tuple>
 struct TuplePrinter<Tuple, 1> {
     static std::string to_string(const Tuple& t)
