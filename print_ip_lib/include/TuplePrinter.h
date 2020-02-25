@@ -1,11 +1,11 @@
+#ifndef TUPLEPRINTER_H
+#define TUPLEPRINTER_H
+#include <tuple>
 /*!
 *\file
 *\brief Supplementary struct to extract ip data from tuples and format it.
 * Uses recursive templates.
 */
-#ifndef TUPLEPRINTER_H
-#define TUPLEPRINTER_H
-#include <tuple>
 
 /// \brief Supplementary struct to extract ip data from tuples and format it.
 /// Recursive template specialization.
